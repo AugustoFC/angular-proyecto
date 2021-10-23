@@ -1,0 +1,54 @@
+<app-slider [nombre]="'Peliculas'" [size]="'small'"></app-slider>
+
+<div class="center">
+    <section id="content">
+
+        <div id="favorita" *ngIf="favorita">
+            <h2 class="subheader">
+                Pelicula Favorita
+            </h2>
+            <h4>
+                {{favorita.title}}
+            </h4>
+            <h4>
+                {{favorita.year}}
+            </h4>
+        </div>
+
+        <h1 class="subheader">{{titulo}}</h1>
+
+        <h2 class="subheader">Listado de Peliculas</h2>
+
+        <!--Listado articulos-->
+        <div id="articles" *ngIf="peliculas">
+           <!-- <div *ngFor="let pelicula of peliculas, let i = index;">
+                <app-pelicula
+                [pelicula]="pelicula"
+                (MarcarFavorita)="mostrarFavorita($event)"></app-pelicula>
+            </div>-->
+            <article class="article-item" *ngFor="let pelicula of peliculas, let i = index;">
+        <div class="image-wrap">
+            <img src="{{pelicula.image}}" alt="{{pelicula.title}}" />
+        </div>
+
+        <h2>{{i}} {{pelicula.title}}</h2>
+        <span class="date">
+            Hace 5 minutos
+        </span>
+        <span class="year" [class.year-green]="pelicula.year > 2016"
+                           [class.year-red]="pelicula.year < 2016">
+            {{pelicula.year}}
+        </span>
+        <a href="#">Leer más</a>
+
+        <div class="clearfix"></div>
+    </article>
+
+
+        </div>
+    </section>
+
+
+    <app-sidebar></app-sidebar>
+
+</div>
